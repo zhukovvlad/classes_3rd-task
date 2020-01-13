@@ -7,40 +7,38 @@ export default class Character {
     this.isPowerModeUsed = false;
     this.attackQuantity = 0;
     this.powerAttackQuantity = 0;
-
-    if (this.isPowerModeUsed === true && this.powerAttackQuantity > 3) {
-      this.health = this.health / 2;
-      this.attack /= 2;
-      this.defence /= 2;
-    }
   }
 
   set powerMode(value) {
     if (value !== 'on') throw new Error('To turn on powerMode value should be equal to \'on\'');
     if (this.isPowerModeUsed === true) throw new Error('You have already activated powerMode.');
     this.isPowerModeUsed = true;
-    if (this.isPowerModeUsed === true && this.powerAttackQuantity <= 3) {
+  }
+
+  get powerMode() {
+    if (this.powerMode === true && this.powerAttackQuantity === 0) {
       this.health *= 2;
       this.attack *= 2;
       this.defence *= 2;
     }
-    if (this.powerAttackQuantity > 3) {
+    if (this.powerAttackQuantity === 3) {
       this.health /= 2;
       this.attack /= 2;
       this.defence /= 2;
     }
-  }
-
-  get powerMode() {
+    this.powerAttackQuantity += 1;
     return `Health is ${this.health}. Attack is ${this.attack}. Defence is ${this.defence}`;
   }
 
+  /*
   makeAttack() {
-    if (this.isPowerModeUsed === true) {
+    if (this.isPowerModeUsed === true && this.powerAttackQuantity < 3) {
       this.powerAttackQuantity += 1;
+      this.powerMode();
     }
     this.attackQuantity += 1;
   }
+  */
 
   levelUp() {
     if (this.health <= 0) throw new Error('It is possible to increase level only if character is alive.');

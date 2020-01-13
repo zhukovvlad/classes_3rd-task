@@ -1,29 +1,9 @@
 // TODO: write your code here
-import { Magician } from './characterClasses';
+import { Bowerman } from './characterClasses';
 
-const mag = new Magician('Dambldor');
+const bow = new Bowerman('Robin Hood');
+console.log(bow);
 
-for (const prop in mag) {
-  if (Object.prototype.hasOwnProperty.call(mag, prop)) {
-    const item = mag[prop];
-    console.log(`Magician ${prop} is ${item}`);
-  }
-}
-
+bow.powerMode = 'on';
 console.log('\n');
-
-mag.powerMode = 'on';
-console.log(mag.powerMode);
-mag.makeAttack();
-mag.makeAttack();
-mag.makeAttack();
-mag.makeAttack();
-console.log(mag.powerMode);
-
-
-for (const prop in mag) {
-  if (Object.prototype.hasOwnProperty.call(mag, prop)) {
-    const item = mag[prop];
-    console.log(`Magician ${prop} is ${item}`);
-  }
-}
+console.log(bow.powerMode);
